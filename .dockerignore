@@ -1,0 +1,3 @@
+.dockerignore
+.git
+sweet_app/Gemfile.lock
