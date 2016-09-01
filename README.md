@@ -14,20 +14,22 @@ The tech stack required will initially just be the api. So, we start with:
 
 The goals are twofold.
 
-Firstly, a new developer on the project should be able to:
+**Firstly**, a new developer on the project should be able to:
 
 1. clone the git repo
 1. type `docker run` (or similar, ie. `docker-compose up` or whatever)
 1. drink a cup of tea (pretty quickly)
-1. party/start committing code
+1. see the app in action (with instructions)
+1. party/start committing features/fixing bugs
 
 Also, for existing developers, the development process should be as seamlesss as:
 
+1. `git pull`
 1. `docker run` or equiv.
 1. basically 5 seconds later, start committing code
-1. use normal git workflow
+1. use normal git workflow (feature branches, PRs etc)
 
-Secondly, we should have an isolated test env that can be deployed using a CI tool (ie. Buildkite) that "just works"
+**Secondly**, we should have an isolated test env that can be deployed using a CI tool (ie. Buildkite) that "just works"
 and matches our dev env (so test behaviour is predictable).
 
 Finally, though not worthy of an explicit goal, it is noted that the managing and extending the devops process, ie
