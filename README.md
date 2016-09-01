@@ -95,12 +95,21 @@ can simply mount the data volume container.*
 
 *TBD*
 
-**You are missing passenger**
+**You are missing passenger.**
 
-*That's not a question*
+*That's not a question.*
 
 **There seems to be another option with respect to mounting/data volumes, seems you can use docker COPY commands
 to actually copy files/dirs from the working directory of the image into the image itself on build?**
 
 *As discussed above, this seems to be an antipattern, the data would only be copied into one specific container and is
 unavailable elsewhere. This makes the solution less composible.*
+
+**How do we organise the various/multiple dockerfiles?**
+
+*Note, we probably actually only need one custom file for the api, the front end and the CDN. Any services should be
+just using the official containers for that service.*
+
+**Are we going to store images on dockerhub? What does that actually really mean? Why wouldn't we just use git?**
+
+*TBD*
