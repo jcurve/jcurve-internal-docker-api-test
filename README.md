@@ -87,7 +87,9 @@ incrementally.
 **Should we create and mount data volumes containing the app? Or just keep the code in the repo and mount the
 relevant folder, ie. "mount a host directory as a data volume"?**
 
-*TBD*
+*The recommended solution, from Docker's documentation, is to create and mount a data volume as a container. This can
+be done as a part of the compose process, then other containers that require access to data (ie. the api rails app)
+can simply mount the data volume container.*
 
 **What are the logging implications? It seems that there are some..**
 
@@ -100,4 +102,5 @@ relevant folder, ie. "mount a host directory as a data volume"?**
 **There seems to be another option with respect to mounting/data volumes, seems you can use docker COPY commands
 to actually copy files/dirs from the working directory of the image into the image itself on build?**
 
-*Ok sweet*
+*As discussed above, this seems to be an antipattern, the data would only be copied into one specific container and is
+unavailable elsewhere. This makes the solution less composible.*
