@@ -1,19 +1,45 @@
-# What
+# Hi
 
-This repository exists to establish the required configuration settings for our
-docker stack to be used in development and test for [secret project]. The tech
-stack required will initially just be the api.
+This repository exists to establish the required configuration settings for our docker stack to be used in development
+and test for [secret project X]. At this stage the solution is not considered appropriate for staging or prod.
 
-We start with:
+The tech stack required will initially just be the api. So, we start with:
 
 - Linux
 - Ruby
 - Postgres
 - Redis
 
+# Goals
+
+The goals are twofold.
+
+Firstly, a new developer on the project should be able to:
+
+1. clone the git repo
+1. type `docker run` (or similar, ie. `docker-compose up` or whatever)
+1. drink a cup of tea (pretty quickly)
+1. party/start committing code
+
+Also, for existing developers, the development process should be as seamlesss as:
+
+1. `docker run` or equiv.
+2. basically 5 seconds later, start committing code
+3. use normal git workflow
+
+Secondly, we should have an isolated test env that can be deployed using a CI tool (ie. Buildkite) that "just works"
+and matches our dev env (so test behaviour is predictable).
+
+Finally, though not worthy of an explicit goal, it is noted that the managing and extending the devops process, ie
+docker itself and associated scripts, should be low overhead for this to be worth doing. Obviously the tool should
+support the architecture and no architectural decisions should be made to accomodate the tool in any way that might
+influence the solution in prod.
+
 # Approach
 
-Current templates to consider:
+Docker! Shell scripts that branch and do things!
+
+Current docker templates to consider:
 
 1. Ruby 2.3.1: https://github.com/docker-library/ruby/blob/2d6449f03976ededa14be5cac1e9e070b74e4de4/2.3/Dockerfile
 2. Postgres 9.5.4: https://github.com/docker-library/postgres/blob/fc36c25f8ac352f1fea6d0e7cf8d9bd92a4e720f/9.5/Dockerfile
@@ -48,3 +74,5 @@ and provide a single stack to interact with.
 Additional services that we choose to add at a later stage can be added as containers to the compose script.
 
 The api app will be a complete composed stack, which can be later composed with the seperate front end and cdn stacks.
+
+
