@@ -86,3 +86,11 @@ incrementally.
 relevant folder, ie. "mount a host directory as a data volume"?**
 
 *TBD*
+
+**What are the logging implications? It seems that there are some..**
+
+*TBD*
+
+**You are missing passenger**
+
+*That's not a question*
