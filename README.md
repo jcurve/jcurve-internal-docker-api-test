@@ -79,3 +79,10 @@ The api app will be a complete composed stack, which can be later composed with 
 
 To simulate the process required in the real repository, I will instantiate a new rails app and then dockerize it
 incrementally.
+
+# Questions
+
+**Should we create and mount data volumes contianing the app? Or just keep the code in the repo and mount the
+relevant folder, ie. "mount a host directory as a data volume"?**
+
+*TBD*
