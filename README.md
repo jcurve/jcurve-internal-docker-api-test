@@ -24,8 +24,8 @@ Firstly, a new developer on the project should be able to:
 Also, for existing developers, the development process should be as seamlesss as:
 
 1. `docker run` or equiv.
-2. basically 5 seconds later, start committing code
-3. use normal git workflow
+1. basically 5 seconds later, start committing code
+1. use normal git workflow
 
 Secondly, we should have an isolated test env that can be deployed using a CI tool (ie. Buildkite) that "just works"
 and matches our dev env (so test behaviour is predictable).
@@ -41,9 +41,9 @@ Docker! Shell scripts that branch and do things!
 
 Current docker templates to consider:
 
-1. Ruby 2.3.1: https://github.com/docker-library/ruby/blob/2d6449f03976ededa14be5cac1e9e070b74e4de4/2.3/Dockerfile
-2. Postgres 9.5.4: https://github.com/docker-library/postgres/blob/fc36c25f8ac352f1fea6d0e7cf8d9bd92a4e720f/9.5/Dockerfile
-3. Redis 3.2.3: https://github.com/docker-library/redis/blob/71807ba24f85da5bc14e9251da3617bbb6f47146/3.2/Dockerfile
+- Ruby 2.3.1: https://github.com/docker-library/ruby/blob/2d6449f03976ededa14be5cac1e9e070b74e4de4/2.3/Dockerfile
+- Postgres 9.5.4: https://github.com/docker-library/postgres/blob/fc36c25f8ac352f1fea6d0e7cf8d9bd92a4e720f/9.5/Dockerfile
+- Redis 3.2.3: https://github.com/docker-library/redis/blob/71807ba24f85da5bc14e9251da3617bbb6f47146/3.2/Dockerfile
 
 NB: A common base: the ruby container uses buildpack-deps:jessie, the postgres and redis containers use debian:jessie
 buildpack-deps:jessie is based on debian:jessie, but adds numerous base packages. refer:
@@ -82,7 +82,7 @@ incrementally.
 
 # Questions
 
-**Should we create and mount data volumes contianing the app? Or just keep the code in the repo and mount the
+**Should we create and mount data volumes containing the app? Or just keep the code in the repo and mount the
 relevant folder, ie. "mount a host directory as a data volume"?**
 
 *TBD*
@@ -94,3 +94,8 @@ relevant folder, ie. "mount a host directory as a data volume"?**
 **You are missing passenger**
 
 *That's not a question*
+
+**There seems to be another option with respect to mounting/data volumes, seems you can use docker COPY commands
+to actually copy files/dirs from the working directory of the image into the image itself on build?**
+
+*Ok sweet*
