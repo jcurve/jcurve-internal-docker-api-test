@@ -75,4 +75,7 @@ Additional services that we choose to add at a later stage can be added as conta
 
 The api app will be a complete composed stack, which can be later composed with the seperate front end and cdn stacks.
 
+# Process
 
+To simulate the process required in the real repository, I will instantiate a new rails app and then dockerize it
+incrementally.
