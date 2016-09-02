@@ -127,3 +127,8 @@ solution is posited here: http://bradgessler.com/articles/docker-bundler/*
 adding it in the image build phase, which will get out of sync?**
 
 *Idno it seems kind of bad through.*
+
+**Ports?**
+
+*Since I have postgres and redis already running, docker compose doesn't want to start containers mapping to those
+ports. I guess we just choose some specific ports and run with those.*
