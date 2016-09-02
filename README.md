@@ -99,7 +99,7 @@ can simply mount the data volume container.*
 
 *That's not a question.*
 
-**There seems to be another option with respect to mounting/data volumes, seems you can use docker COPY commands
+**There seems to be another option with respect to mounting/data volumes, seems you can use docker ADD/COPY commands
 to actually copy files/dirs from the working directory of the image into the image itself on build?**
 
 *As discussed above, this seems to be an antipattern, the data would only be copied into one specific container and is
