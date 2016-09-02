@@ -110,6 +110,6 @@ unavailable elsewhere. This makes the solution less composible.*
 *Note, we probably actually only need one custom file for the api, the front end and the CDN. Any services should be
 just using the official containers for that service.*
 
-**Are we going to store images on dockerhub? What does that actually really mean? Why wouldn't we just use git?**
+**Are we going to store our images on dockerhub? What does that actually really mean? Why wouldn't we just use git?**
 
 *TBD*

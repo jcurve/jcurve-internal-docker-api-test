@@ -1,14 +1,14 @@
-version '2'
+version "2"
 services:
   api:
     build: "./sweet_app"
     ports: "3010:3010"
     volumes: "./sweet_app:/api"
   postgres:
-    image:
-    ports:
-    volumes:
+    image: "postgres:9.5.4"
+    ports: "5432:5432"
+    volumes: "sweet_app_postgres:/var/lib/postgres/data"
   redis:
-    image:
-    ports:
-    volumes:
+    image: "redis:3.2.3"
+    ports: "6379:6379"
+    volumes: "sweet_app_redis:/var/lib/redis/data"
