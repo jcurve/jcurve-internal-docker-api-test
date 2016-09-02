@@ -1,20 +1,32 @@
 version: "2"
-# this syntax is wrong, but apparently you can use a top level volumes definition
-# and make volumes available to multiple consuming containers...
-# volumes:
-  # api_vol: "${PWD}/sweet_app"
+
+volumes:
+  api_vol:
+  postgres:
+  redis:
+
 services:
   api:
     build: "./sweet_app"
     ports:
       - "3010:3010"
     volumes:
+      #- "api_vol:${PWD}/sweet_app:/api"
       - "${PWD}/sweet_app:/api"
-#  postgres:
-#    image: "postgres:9.5.4"
-#    ports: "5432:5432"
-#    volumes: "sweet_app_postgres:/var/lib/postgres/data"
-#  redis:
-#    image: "redis:3.2.3"
-#    ports: "6379:6379"
-#    volumes: "sweet_app_redis:/var/lib/redis/data"
+    depends_on:
+      - "postgres"
+      - "redis"
+
+  postgres:
+    image: "postgres:9.5.4"
+    ports:
+      - "3011:5432"
+    volumes:
+      - "postgres:/var/lib/postgres/data"
+
+  redis:
+    image: "redis:3.2.3"
+    ports:
+      - "3012:6379"
+    volumes:
+      - "redis:/var/lib/redis/data"
