@@ -1,12 +1,14 @@
 # Hi
 
+Docker! Shell scripts that branch and do things!
+
 This repository exists to establish the required configuration settings for our docker stack to be used in development
 and test for [secret project X]. At this stage the solution is not considered appropriate for staging or prod.
 
 The tech stack required will initially just be the api. So, we start with:
 
 - Linux
-- Ruby
+- Ruby/Rails + Passenger
 - Postgres
 - Redis
 
@@ -37,9 +39,7 @@ docker itself and associated scripts, should be low overhead for this to be wort
 support the architecture and no architectural decisions should be made to accomodate the tool in any way that might
 influence the solution in prod.
 
-# Approach
-
-Docker! Shell scripts that branch and do things!
+# Base Images
 
 Current docker templates to consider:
 
@@ -75,9 +75,12 @@ and provide a single stack to interact with.
 
 Additional services that we choose to add at a later stage can be added as containers to the compose script.
 
-The api app will be a complete composed stack, which can be later composed with the seperate front end and cdn stacks.
+We will use a data volume container to provide the contents of the app folder from the local dir to the api container,
+and possibly service containers if they need access. There is also the option of just providing access to the env.
 
-# Process
+The api app is basically complete composed stack, which can be later composed with the seperate front end and cdn stacks.
+
+# Learning Process
 
 To simulate the process required in the real repository, I will instantiate a new rails app and then dockerize it
 incrementally.
@@ -113,3 +116,14 @@ just using the official containers for that service.*
 **Are we going to store our images on dockerhub? What does that actually really mean? Why wouldn't we just use git?**
 
 *TBD*
+
+**Ugh how do we not bundle install from scratch errytyme?**
+
+*While this command gets cached and so it only matters when we need to rerun (ie. when we add a gem), this is still
+annoying in that every change to the Gemfile requires a complete recreate of the docker container from the image. A
+solution is posited here: http://bradgessler.com/articles/docker-bundler/*
+
+**What the heck is with having to both provide the local dir as a data volume mounted through compose, and ALSO
+adding it in the image build phase, which will get out of sync?**
+
+*Idno it seems kind of bad through.*
