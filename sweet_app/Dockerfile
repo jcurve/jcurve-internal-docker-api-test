@@ -16,20 +16,20 @@ WORKDIR /api
 ### ENSURE .env FILE IS PRESENT
 RUN ["test", "-e", "./.env"]
 
-### UPDATE SYSTEM AND INSTALL C LIB FOR CONNECTING TO PG DB
-# from the docker docs "Getting Started With Rails section"
-# TODO: hmm do we need this given that the pg instance is in another container?
-RUN apt-get update -qq && apt-get install -y build-essential libpq-dev
+### UPDATE SYSTEM AND INSTALL C LIB FOR CONNECTING TO PG DB AND NODEJS FOR RUNTIME
+RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
 
 ### GET ALL OF THE GEMS
 RUN ["bundle", "install"]
 
+RUN ["echo", "wat"]
+
 ### I <3 DATABAE
-RUN ["rails", "db:setup:all"]
+#RUN ["rails", "db:setup"]
 
 # TODO: what about tests?
 
 # the CMD thing here is a default arg to run whenever the container is run
-CMD ["ruby", "script.rb"]
+CMD ["rails s"]
 # this should really be:
 # TODO: start passenger
