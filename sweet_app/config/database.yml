@@ -1,23 +1,18 @@
-default: &default
-  adapter: postgresql
-  encoding: utf8
-  # For details on connection pooling, see rails configuration guide
-  # http://guides.rubyonrails.org/configuring.html#database-pooling
-  pool: 5
+#development: &default
+  #adapter: postgresql
+  #encoding: unicode
+  #database: postgres
+  #pool: 5
+  #username: postgres
+  #password:
+  #host: db
+#
+#test:
+  #<<: *default
+  #database: sweet_app_test
 
 development:
-  <<: *default
-  url: <%= ENV['DATABASE_URL'] + '_dev'%>
+  url: <%= ENV['DATABASE_URL'].gsub('?', '_development?') %>
 
-  # Minimum log levels, in increasing order:
-  #   debug5, debug4, debug3, debug2, debug1,
-  #   log, notice, warning, error, fatal, and panic
-  # Defaults to warning.
-  # min_messages: notice
-
-# Warning: The database defined as "test" will be erased and
-# re-generated from your development database when you run "rake".
-# Do not set this db to the same as development or production.
 test:
-  <<: *default
-  url: <%= ENV['DATABASE_URL'] + '_test'%>
+  url: <%= ENV['DATABASE_URL'].gsub('?', '_test?') %>
