@@ -16,14 +16,12 @@ services:
     depends_on:
       - "postgres"
       - "redis"
-
   postgres:
     image: "postgres:9.5.4"
     ports:
       - "3011:5432"
     volumes:
       - "postgres:/var/lib/postgres/data"
-
   redis:
     image: "redis:3.2.3"
     ports:

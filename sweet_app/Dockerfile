@@ -1,23 +1,5 @@
-# TODO:can we handle some error cases? if this image is not run with a mounted /api for example?
-# also we will need to exit n where config etc isn't in place, with messages
-# probably use a bash script, so we don't have to have 37 image layers or \
-#                                                                    like \
-#                                                                   heaps \
-#                                                                     of &&
-#                                                                    this \
-#                                                                  business
-
 ### BASE IMAGE
 FROM ruby:2.3.1
-
-# TODO: CHECK CONFIG is in place?
-# also check secrets/env variables are in place?
-
-### PREPARE SYSTEM FOR RAILS
-# from the docker docs "Getting Started With Rails section"
-# TODO: hmm do we need nodejs since it's api only?
-# scattered about the place I see other inclusions for nokogiri also - we aren't using that though
-RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
 
 ### MOVE INTO THE API VOL SO WE CAN DO THINGS
 # move into the mounted volume with the app - does this make sense given it's not mounted yet?
@@ -31,20 +13,23 @@ RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
 COPY . /api
 WORKDIR /api
 
-### SET UP BITCOIN MINING ALGO
-# jokes
-# just make sure that we can see things happening on the build
-# "RUN" stuff actually creates a new layer of the container, and gets run exactly once, on create
-RUN ["echo", "build proceeding"]
+### ENSURE .env FILE IS PRESENT
+RUN ["test", "-e", "./.env"]
 
-### PRETTY GEMS
-RUN bundle install
+### UPDATE SYSTEM AND INSTALL C LIB FOR CONNECTING TO PG DB
+# from the docker docs "Getting Started With Rails section"
+# TODO: hmm do we need this given that the pg instance is in another container?
+RUN apt-get update -qq && apt-get install -y build-essential libpq-dev
 
-# TODO: any database commands?
-# TODO: start passenger
+### GET ALL OF THE GEMS
+RUN ["bundle", "install"]
 
-# test yo
-RUN mkdir wat && pwd && ls -al
+### I <3 DATABAE
+RUN ["rails", "db:setup:all"]
+
+# TODO: what about tests?
 
 # the CMD thing here is a default arg to run whenever the container is run
 CMD ["ruby", "script.rb"]
+# this should really be:
+# TODO: start passenger
