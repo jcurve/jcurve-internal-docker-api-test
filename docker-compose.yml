@@ -3,7 +3,7 @@ version: "2"
 services:
   api:
     depends_on:
-      - "postgres"
+      - "db"
     build: "./sweet_app"
     ports:
       - "3000:3000"
@@ -11,16 +11,17 @@ services:
       #- "api_vol:${PWD}/sweet_app:/api"
       #- "${PWD}/sweet_app:/api"
       - "./sweet_app:/api"
-  postgres:
+  db:
     image: "postgres:9.5.4"
-    environment:
-      - "POSTGRES_USER=api"
-      - "POSTGRES_PASSWORD=sekret"
-    ports:
-      - "5432:5432"
-    volumes:
-      - "postgres:/var/lib/postgres/data"
+    #environment:
+      #- "POSTGRES_USER=postgres"
+      #- "POSTGRES_PASSWORD=sekret"
+    #ports:
+      #- "5432:5432"
 
-volumes:
+    #volumes:
+      #- "db:/var/lib/postgres/data"
+
+#volumes:
   #api_vol:
-  postgres:
+  #db:
