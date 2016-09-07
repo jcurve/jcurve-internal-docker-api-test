@@ -23,12 +23,11 @@ RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
 RUN ["bundle", "install"]
 
 ### I <3 DATABAE
-#RUN ["rails", "db:setup"]
-
-# TODO: what about tests?
+RUN bundle exec bin/rails db:create && bundle exec bin/rails db:migrate
 
 # the CMD thing here is a default arg to run whenever the container is run
-#CMD ["ruby", "script.rb"]
 CMD bundle exec bin/rails s -p 3000 -b '0.0.0.0'
 # this should really be:
 # TODO: start passenger
+
+# What about tests? Actually, these are just a different command for the container.
