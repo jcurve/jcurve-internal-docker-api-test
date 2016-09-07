@@ -22,14 +22,13 @@ RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
 ### GET ALL OF THE GEMS
 RUN ["bundle", "install"]
 
-RUN ["echo", "wat"]
-
 ### I <3 DATABAE
 #RUN ["rails", "db:setup"]
 
 # TODO: what about tests?
 
 # the CMD thing here is a default arg to run whenever the container is run
-CMD ["rails s"]
+#CMD ["ruby", "script.rb"]
+CMD bundle exec bin/rails s -p 3000 -b '0.0.0.0'
 # this should really be:
 # TODO: start passenger
