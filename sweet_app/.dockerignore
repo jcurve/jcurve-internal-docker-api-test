@@ -1,2 +1,6 @@
 .dockerignore
-# not sure what to ignore in here yet
+.git*
+tmp/
+log/
+*.sw*
+.DS_Store
