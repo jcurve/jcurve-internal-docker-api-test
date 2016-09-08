@@ -119,9 +119,10 @@ just using the official containers for that service.*
 
 **Ugh how do we not bundle install from scratch errytyme?**
 
-*While this command gets cached and so it only matters when we need to rerun (ie. when we add a gem), this is still
+~~While this command gets cached and so it only matters when we need to rerun (ie. when we add a gem), this is still
 annoying in that every change to the Gemfile requires a complete recreate of the docker container from the image. A
-solution is posited here: http://bradgessler.com/articles/docker-bundler/*
+solution is posited here: http://bradgessler.com/articles/docker-bundler/~~
+*So we can totally just mount a volume over the default gem path... this seems super easy. I guess we could docker/git ignore the contents if we don't want to pass stuff around, but it kinds of seems like there's not much point, as you have to download stuff from _somewhere_ on the destination machine right?*
 
 **What the heck is with having to both provide the local dir as a data volume mounted through compose, and ALSO
 adding it in the image build phase, which will get out of sync?**

@@ -10,20 +10,29 @@ FROM ruby:2.3.1
 #
 # This doesn't seem nice but from what I understand, it's the recommended approach ¯\_(ツ)_/¯
 # refer: https://docs.docker.com/compose/faq/#/should-i-include-my-code-with-copy-add-or-a-volume
-COPY . /api
+# for now we don't care
+#COPY . /api
 WORKDIR /api
 
 ### ENSURE .env FILE IS PRESENT
-RUN ["test", "-e", "./.env"]
+# TODO: check the actual environment variables presence
+#RUN ["test", "-e", "./.env"]
+# something like RUN  ["test", "$THING", "!=", ""] should work
 
 ### UPDATE SYSTEM AND INSTALL C LIB FOR CONNECTING TO PG DB AND NODEJS FOR RUNTIME
 RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
 
+### USE EXTERNAL BUNDLE VOLUME
+# for now we do this manually
+#ENV BUNDLE_GEMFILE=./Gemfile BUNDLE_JOBS=2 BUNDLE_PATH=/bundle
+
 ### GET ALL OF THE GEMS
-RUN ["bundle", "install"]
+# for now we do this manually
+#RUN ["bundle", "install"]
 
 ### I <3 DATABAE
-RUN bundle exec bin/rails db:create && bundle exec bin/rails db:migrate
+# for now we do this manually
+#RUN bundle exec bin/rails db:create && bundle exec bin/rails db:migrate
 
 # the CMD thing here is a default arg to run whenever the container is run
 CMD bundle exec bin/rails s -p 3000 -b '0.0.0.0'
@@ -31,3 +40,4 @@ CMD bundle exec bin/rails s -p 3000 -b '0.0.0.0'
 # TODO: start passenger
 
 # What about tests? Actually, these are just a different command for the container.
+
