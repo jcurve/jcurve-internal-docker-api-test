@@ -133,3 +133,7 @@ adding it in the image build phase, which will get out of sync?**
 
 *Since I have postgres and redis already running, docker compose doesn't want to start containers mapping to those
 ports. I guess we just choose some specific ports and run with those.*
+
+**My server run is failing with "server is already running. Check /api/tmp/pids/server.pid." Help?**
+
+*Not sure if this will still happen when we set up with passenger so haven't looked into a permanent fix. For now, just `rm sweet_app/api/tmp/pids/server.pid`*
