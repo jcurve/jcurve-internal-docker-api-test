@@ -137,3 +137,15 @@ ports. I guess we just choose some specific ports and run with those.*
 **My server run is failing with "server is already running. Check /api/tmp/pids/server.pid." Help?**
 
 *Not sure if this will still happen when we set up with passenger so haven't looked into a permanent fix. For now, just `rm sweet_app/api/tmp/pids/server.pid`*
+
+# Conclusions
+
+The final set up to use docker and buildkite for dev and CI is very simple.
+
+The plan is detailed below:
+1. Create a docker-compose.yml in the api repository.
+1. Use a postgres image in compose and update the rails database.yml config, and ENV.
+1. Use a redis image in compose and update the rails config(?), and ENV.
+1. Create a Dockerfile in the api root folder that specifies the system dependencies for the image to run the Rails api.
+1. Add a build step to the 
+

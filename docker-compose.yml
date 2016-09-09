@@ -9,7 +9,7 @@ services:
       - "3000:3000"
     volumes:
       - "./sweet_app:/api"
-      - "./sweet_app/bundle:/usr/local/bundle"
+      #- "./sweet_app/bundle:/usr/local/bundle"
   db:
     image: "postgres:9.5.4"
 
