@@ -1,6 +1,4 @@
 api:
-  depends_on:
-    - 'db'
   build: './sweet_app'
   ports:
     - '3000:3000'
