@@ -1,8 +1,3 @@
-# [TODO](#todo)
-- needs to work without continue (how to wait until sudo docker-compose up -d is definitely working?
-- we want three? pipelines: set up pipeline, test pipeline? or just a smarter pipeline that figures it out with a
-  shell script?
-
 # [Hi](#hi)
 
 Docker! Shell scripts that branch and do things!
@@ -93,4 +88,9 @@ only supports "version 1" of the docker-compose.yml syntax.
 **What is required to include passenger in the setup?**
 
 **My server run is failing with "server is already running. Check /api/tmp/pids/server.pid." Help?**
+
 *Not sure if this will still happen when we set up with passenger so haven't looked into a permanent fix. For now, just `rm sweet_app/api/tmp/pids/server.pid`*
+
+# [TODO](#todo)
+- we want two(?) pipelines: set up pipeline, test pipeline? or just a smarter pipeline that figures it out with a
+  shell script?
