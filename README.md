@@ -80,13 +80,13 @@ and for the chain of images they are ultimately based on:
 - https://github.com/docker-library/buildpack-deps/blob/a0a59c61102e8b079d568db69368fb89421f75f2/jessie/curl/Dockerfile
 - https://github.com/tianon/docker-brew-debian/blob/589b967ff4364528ebd686b002a6ee00f00f4657/jessie/Dockerfile
 
-# Notes
+# [Notes](#notes)
 
 Since we will be using a linux box (presumably virtual, hosted on AWS) for our CI, we are presently limited to the
 linux supported version of Docker Compose, which is 1.5.2 as of the time of writing (12/09/16). This version, unlike 1.6+
 only supports "version 1" of the docker-compose.yml syntax.
 
-# Unanswered Questions
+# [Unanswered Questions](#unanswered-questions)
 
 **What are the logging implications?**
 
