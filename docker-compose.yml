@@ -4,6 +4,6 @@ api:
     - '3000:3000'
   volumes:
     - './sweet_app:/api'
-    - './usr/local/bundle:/usr/local/bundle'
+    - '/usr/local/bundle:/usr/local/bundle'
 db:
   image: 'postgres:9.5.4'
