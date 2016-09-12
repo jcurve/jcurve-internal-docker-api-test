@@ -5,5 +5,7 @@ api:
   volumes:
     - './sweet_app:/api'
     - '/usr/local/bundle:/usr/local/bundle'
+  links:
+    - 'db'
 db:
   image: 'postgres:9.5.4'
