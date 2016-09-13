@@ -83,6 +83,11 @@ not clear why the package managers are so far behind the actually available rele
 only supports "version 1" of the docker-compose.yml syntax. We can resolve this issue by grabbing the latest version of
 docker compose ourselves.
 
+Options to grab latest version:
+
+- just curl/wget from shell as in [this Buildkite script](https://github.com/buildkite/elastic-ci-stack-for-aws/blob/master/packer/scripts/install-docker.sh)
+- since docker-compose is pure python, we can `sudo easy_install pip && sudo pip install docker-compose`
+
 # [Unanswered Questions](#unanswered-questions)
 
 **What are the logging implications?**
