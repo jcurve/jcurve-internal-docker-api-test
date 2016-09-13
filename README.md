@@ -92,5 +92,4 @@ only supports "version 1" of the docker-compose.yml syntax.
 *Not sure if this will still happen when we set up with passenger so haven't looked into a permanent fix. For now, just `rm sweet_app/api/tmp/pids/server.pid`*
 
 # [TODO](#todo)
-- we want two(?) pipelines: set up pipeline, test pipeline? or just a smarter pipeline that figures it out with a
-  shell script?
+- make db container persist with a volume
