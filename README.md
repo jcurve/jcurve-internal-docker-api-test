@@ -77,9 +77,11 @@ and for the chain of images they are ultimately based on:
 
 # [Notes](#notes)
 
-Since we will be using a linux box (presumably virtual, hosted on AWS) for our CI, we are presently limited to the
-linux supported version of Docker Compose, which is 1.5.2 as of the time of writing (12/09/16). This version, unlike 1.6+
-only supports "version 1" of the docker-compose.yml syntax.
+Since we will be using a linux box (presumably virtual, hosted on AWS) for our CI, if we rely on system package managers
+we are presently limited to an old version of Docker Compose. This is 1.5.2 as of the time of writing (12/09/16). It's
+not clear why the package managers are so far behind the actually available releases for linux. This version, unlike 1.6+
+only supports "version 1" of the docker-compose.yml syntax. We can resolve this issue by grabbing the latest version of
+docker compose ourselves.
 
 # [Unanswered Questions](#unanswered-questions)
 
